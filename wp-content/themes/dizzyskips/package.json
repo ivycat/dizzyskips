@@ -1,0 +1,38 @@
+{
+	"name": "dizzyskips",
+	"version": "1.0.0",
+	"description": "Custom FSE theme for dizzyskips.com",
+	"author": "sewmyheadon",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"Theme"
+	],
+	"homepage": "https://dizzyskips.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/carolinan/fullsiteediting"
+	},
+	"engines": {
+		"node": ">=14.15.0",
+		"npm": ">=6.14.8 <7"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.23.3",
+		"@wordpress/babel-preset-default": "^7.29.0",
+		"@wordpress/scripts": "^26.16.0",
+		"cssnano": "^6.0.1",
+		"gulp": "^5.0.0",
+		"gulp-clean": "^0.4.0",
+		"gulp-cli": "^2.3.0",
+		"gulp-concat-css": "^1.2.0",
+		"gulp-postcss": "^9.0.1",
+		"gulp-rename": "^2.0.0",
+		"postcss": "^8.4.31",
+		"postcss-cli": "^10.1.0"
+	},
+	"scripts": {
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js"
+	}
+}
