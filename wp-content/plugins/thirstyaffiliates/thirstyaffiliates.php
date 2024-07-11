@@ -3,18 +3,12 @@
  * Plugin Name: ThirstyAffiliates
  * Plugin URI: http://thirstyaffiliates.com/
  * Description: ThirstyAffiliates is a revolution in affiliate link management. Collect, collate and store your affiliate links for use in your posts and pages.
- * Version: 3.11.1
+ * Version: 3.11.2
+ * Requires PHP: 7.4
  * Author: Caseproof
  * Author URI: https://caseproof.com/
- * Requires at least: 5.0
- * Tested up to: 6.4
- *
  * Text Domain: thirstyaffiliates
  * Domain Path: /languages/
- *
- * @package ThirstyAffiliates
- * @category Core
- * @author Rymera Web Co
  */
 
 if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

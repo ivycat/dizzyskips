@@ -452,7 +452,7 @@ class Termageddon_Usercentrics_Admin {
 		// Divi Video Overlay Integration Player.
 		add_settings_field(
 			'termageddon_usercentrics_integration_divi_video',
-			__( 'Divi Video Player Integration', 'termageddon-usercentrics' ) . $this->mark_as_beta() . '<br>
+			__( 'Divi Video Player Integration', 'termageddon-usercentrics' ) . '<br>
 			<em>' . __( 'This resolves and improves the cookie-consent implementation when using an image placeholder overlay for the Divi video embed.', 'termageddon-usercentrics' ) . '</em>',
 			array( &$this, 'divi_video_support' ), // function which prints the field.
 			'termageddon-usercentrics', // page slug.
@@ -465,6 +465,25 @@ class Termageddon_Usercentrics_Admin {
 		register_setting(
 			'termageddon_usercentrics_settings', // settings group name.
 			'termageddon_usercentrics_integration_divi_video', // option name.
+			'' // sanitization function.
+		);
+
+		// Elementor Video Overlay Integration Player.
+		add_settings_field(
+			'termageddon_usercentrics_integration_elementor_video',
+			__( 'Elementor Video Player Integration', 'termageddon-usercentrics' ) . $this->mark_as_beta() . '<br>
+			<em>' . __( 'This resolves and improves the cookie-consent implementation when using an image placeholder overlay for the Elementor video embed.', 'termageddon-usercentrics' ) . '</em>',
+			array( &$this, 'elementor_video_support' ), // function which prints the field.
+			'termageddon-usercentrics', // page slug.
+			'termageddon_usercentrics_section_settings', // section ID.
+			array(
+				'label_for' => 'termageddon_usercentrics_integration_elementor_video',
+			)
+		);
+
+		register_setting(
+			'termageddon_usercentrics_settings', // settings group name.
+			'termageddon_usercentrics_integration_elementor_video', // option name.
 			'' // sanitization function.
 		);
 
@@ -504,7 +523,7 @@ class Termageddon_Usercentrics_Admin {
 			'termageddon_usercentrics_section_settings', // section ID.
 			array(
 				'label_for'   => 'termageddon_usercentrics_disable_troubleshooting',
-				'description' => __( 'When enabled, this feature allows you to disable the consent tool for all site visitors, however by adding <code>?enable-usercentrics</code> to the end of a URL, the consent tool will load, allowing you to troubleshoot any issues (or to reach out to Termageddon support to help assist with troubleshooting)', 'termageddon-usercentrics' ),
+				'description' => __( 'When enabled, this feature allows you to turn off the consent tool for all site visitors, however by adding <code>?enable-usercentrics</code> to the end of a URL, the consent tool will load, allowing you to troubleshoot any issues (or to reach out to Termageddon support to help assist with troubleshooting)', 'termageddon-usercentrics' ),
 			)
 		);
 
@@ -814,6 +833,17 @@ class Termageddon_Usercentrics_Admin {
 	public function divi_video_support( array $args ) {
 		$args['label'] = 'enabled';
 		self::generate_checkbox( 'divi_video', 'integration', $args );
+	}
+
+	/**
+	 * The HTML field for the admin disable checkbox.
+	 *
+	 * @param array $args The arguments provided by the add_settings_field() method.
+	 * @return void
+	 */
+	public function elementor_video_support( array $args ) {
+		$args['label'] = 'enabled';
+		self::generate_checkbox( 'elementor_video', 'integration', $args );
 	}
 
 	/**

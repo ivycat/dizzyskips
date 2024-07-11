@@ -107,14 +107,6 @@
             </tr>
             <tr>
                 <th scope="row">
-                    <label for="ta-portal-subscription-pause"><?php esc_html_e( 'Subscription Pause', 'thirstyaffiliates' ); ?></label>
-                </th>
-                <td>
-                    <label for="ta-portal-subscription-pause"><input type="checkbox" id="ta-portal-subscription-pause" name="ta_portal_subscription_pause_enabled" <?php checked( $this->_helper_functions->get_portal_config_value( 'features.subscription_pause.enabled' ) ); ?>> <?php esc_html_e( 'Allow subscriptions to be paused', 'thirstyaffiliates' ); ?></label>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
                     <label for="ta-portal-invoice-history"><?php esc_html_e( 'Invoice History', 'thirstyaffiliates' ); ?></label>
                 </th>
                 <td>

@@ -266,7 +266,7 @@ class Termageddon_Usercentrics {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		if ( self::is_geoip_enabled() && ! wp_doing_cron() ) {
+		if ( self::is_geoip_enabled() && ! self::is_ajax_mode_enabled() && ! wp_doing_cron() ) {
 			$this->loader->add_action( 'init', $this, 'lookup_ip_address' );
 
 		}
@@ -420,6 +420,11 @@ class Termageddon_Usercentrics {
 	public static function verify_maxmind_database() {
 		// Check for fatal errors.
 		if ( self::check_for_download_errors() ) {
+			return false;
+		}
+
+		// If Geo IP is enabled, download.
+		if ( ! self::is_geoip_enabled() ) {
 			return false;
 		}
 
@@ -749,18 +754,26 @@ class Termageddon_Usercentrics {
 		return ( get_option( 'termageddon_usercentrics_location_debug', false ) ? true : false );
 
 	}
-	
-	
+
+
 	/**
 	 * Returns whether disabled for troubleshooting mode is enabled and not in the query params
 	 *
 	 * @return bool
 	 */
 	public static function is_disabled_for_troubleshooting() {
-		$enabled = ( get_option( 'termageddon_usercentrics_disable_troubleshooting', false ) ? true : false );
+		return ( get_option( 'termageddon_usercentrics_disable_troubleshooting', false ) ? true : false );
 
-		if ($enabled && !isset($_GET['enable-usercentrics'])) return true;
-		return false;
+	}
+
+
+	/**
+	 * Returns whether user wants to force enable via the query params.
+	 *
+	 * @return bool
+	 */
+	public static function is_enabled_via_get_override() {
+		return isset( $_GET['enable-usercentrics'] );
 
 	}
 
@@ -833,52 +846,58 @@ class Termageddon_Usercentrics {
 
 		$cookie_title = self::get_cookie_title();
 
-		// Validate Database && download database if needed.
-		self::verify_maxmind_database();
+		// If Geo IP is enabled, download.
+		if ( self::is_geoip_enabled() ) {
+			// Validate Database && download database if needed.
+			self::verify_maxmind_database();
 
-		// If Email is not in blacklist, try to calculate geo ip location.
-		if ( '::1' !== $ip_address ) {
-			// Check for cached location via cookie, or check the geo ip database if no cookie found.
-			if ( isset( $_COOKIE[ $cookie_title ] ) && ! self::is_debug_mode_enabled() ) {
-				@list('city' => $city, 'state' => $state, 'country' => $country) = json_decode( sanitize_text_field( wp_unslash( $_COOKIE[ $cookie_title ] ) ), true );
-			} else {
-				try {
+			// If Email is not in blacklist, try to calculate geo ip location.
+			if ( '::1' !== $ip_address ) {
+				// Check for cached location via cookie, or check the geo ip database if no cookie found.
+				if ( isset( $_COOKIE[ $cookie_title ] ) && ! self::is_debug_mode_enabled() ) {
+					@list('city' => $city, 'state' => $state, 'country' => $country) = json_decode( sanitize_text_field( wp_unslash( $_COOKIE[ $cookie_title ] ) ), true );
+				} else {
+					try {
 
-					$reader = new Reader( self::get_maxmind_db_path() );
+						$reader = new Reader( self::get_maxmind_db_path() );
 
-					$record = $reader->City( $ip_address );
+						$record = $reader->City( $ip_address );
 
-					if ( isset( $record->city->names ) && isset( $record->city->names['en'] ) ) {
-						$city = $record->city->names['en'];
-					}
-					if ( isset( $record->subdivisions[0] ) && isset( $record->subdivisions[0]->names ) && isset( $record->subdivisions[0]->names['en'] ) ) {
-						$state = $record->subdivisions[0]->names['en'];
-					}
-					if ( isset( $record->country->names ) && isset( $record->country->names['en'] ) ) {
-						$country = $record->country->names['en'];
-					}
+						if ( isset( $record->city->names ) && isset( $record->city->names['en'] ) ) {
+							$city = $record->city->names['en'];
+						}
+						if ( isset( $record->subdivisions[0] ) && isset( $record->subdivisions[0]->names ) && isset( $record->subdivisions[0]->names['en'] ) ) {
+							$state = $record->subdivisions[0]->names['en'];
+						}
+						if ( isset( $record->country->names ) && isset( $record->country->names['en'] ) ) {
+							$country = $record->country->names['en'];
+						}
 
-					// If able to, set cookie to allow future page loads to simply use the cookie for processing.
-					if ( ! headers_sent() ) {
-						setcookie(
-							$cookie_title,
-							wp_json_encode(
+						// If able to, set cookie to allow future page loads to simply use the cookie for processing.
+						if ( ! headers_sent() && ! isset( $_COOKIE[ $cookie_title ] ) ) {
+							$cookie_value = wp_json_encode(
 								array(
 									'city'    => $city,
 									'state'   => $state,
 									'country' => $country,
 								)
-							),
-							0,
-							COOKIEPATH,
-							COOKIE_DOMAIN
-						);
-					}
-				} catch ( \Throwable $th ) {
-					// Error with GEO IP.
-					// Display it IF debug via GET is enabled and administrator.
-					if ( current_user_can( 'administrator' ) || self::is_debug_mode_enabled() ) {
-						self::debug( 'Error Calculating Location', $th->getMessage() );
+							);
+
+							setcookie(
+								$cookie_title,
+								$cookie_value,
+								0,
+								COOKIEPATH,
+								COOKIE_DOMAIN
+							);
+							$_COOKIE[ $cookie_title ] = $cookie_value;
+						}
+					} catch ( \Throwable $th ) {
+						// Error with GEO IP.
+						// Display it IF debug via GET is enabled and administrator.
+						if ( current_user_can( 'administrator' ) || self::is_debug_mode_enabled() ) {
+							self::debug( 'Error Calculating Location', $th->getMessage() );
+						}
 					}
 				}
 			}

@@ -28,9 +28,21 @@ const NEW_TAB_REL = 'noreferrer noopener';
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 export const pickRelevantMediaFiles = ( image ) => {
-	const pickedImageProps = pick( image, [ 'alt_text', 'id', 'link', 'caption' ] );
+	const pickedImageProps = pick( image, [ 'alt_text', 'id', 'link' ] );
 	const imageProps = { ...pickedImageProps, alt: pickedImageProps.alt_text };
+
 	imageProps.url = get( image, [ 'sizes', 'large', 'url' ] ) || get( image, [ 'media_details', 'sizes', 'large', 'source_url' ] ) || image.url;
+
+	let caption = '';
+
+	if ( typeof image.caption === 'string' ) {
+		caption = image.caption;
+	} else if ( typeof image.caption === 'object' && typeof image.caption.rendered === 'string' ) {
+		caption = image.caption.rendered;
+	}
+
+	imageProps.caption = caption;
+
 	return imageProps;
 };
 

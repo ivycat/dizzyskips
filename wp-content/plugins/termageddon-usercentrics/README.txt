@@ -3,8 +3,8 @@ Contributors: dintriglia
 Donate link: https://termageddon.com
 Tags: termageddon, cookie, consent, embed, usercentrics
 Requires at least: 3.0.1
-Tested up to: 6.4.3
-Stable tag: 1.4.0
+Tested up to: 6.5.5
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,9 +26,17 @@ If you wish to place a privacy settings link in the footer or anywhere else, you
 
 == Changelog ==
 
+= 1.4.2 =
+
+-   [ADD] Added Elementor Video Integration Support to improve image overlay placeholder handling when consent is required. 
+
+= 1.4.1 =
+
+-   [FIX] Fixed an issue where the plugin with Ajax Mode would bust cache for every request for some providers such as Pressable.
+
 = 1.4.0 =
 
--   [ADD] Added ability to disable plugin for troubleshooting to all visitors unless ?enable-usercentrics is added as a query parameter to the URL.
+-   [ADD] Added ability to turn off plugin for troubleshooting to all visitors unless ?enable-usercentrics is added as a query parameter to the URL.
 
 = 1.3.9 =
 

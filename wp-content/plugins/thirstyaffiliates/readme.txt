@@ -1,11 +1,11 @@
 === ThirstyAffiliates - Affiliate Links, Link Branding, Link Tracking & Marketing Plugin ===
-Contributors: supercleanse, cartpauj
+Contributors: supercleanse, cartpauj, sethshoultes
 Donate link: https://thirstyaffiliates.com
 Tags: affiliate links, link branding, link shortner, link tracking, redirects, affiliate, affiliate marketing, affiliates, short links, shorten, shortening, shortlink, shortlinks, shorturl, shrinking, marketing, marketing plugin, cloak, cloaker, cloaking, 301, 302, 307, 404, bit.ly, bitly, tinyurl, link cloaking, link redirection, link shortener, links, thirstyaffiliates, thirsty, url redirection, url shortener, urls, seo, slug, slugs
-Requires at least: 5.0
+Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.4
-Stable tag: 3.11.1
+Tested up to: 6.5
+Stable tag: 3.11.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -184,6 +184,10 @@ If you need to run an affiliate program on your store we recommend you check out
 5. Reports Page
 
 == Changelog ==
+= 3.11.2 =
+* Removed pause option from Customer Portal as Stripe has removed that feature
+* Return if post_type query var is not set
+* Fix Gutenberg Image block not showing on front-end
 
 = 3.11.1 =
 * Minor adjustments to the Onboarding Wizard and admin notices

@@ -93,6 +93,7 @@ class Termageddon_Usercentrics_Public {
 
 		// Check for requirement of needing jQuery.
 		if ( Termageddon_Usercentrics::is_integration_enabled( 'divi_video' )
+		  || Termageddon_Usercentrics::is_integration_enabled( 'elementor_video' )
 		  || Termageddon_Usercentrics::should_use_alternate_psl()
 		) {
 			wp_enqueue_script( 'jquery' );
@@ -119,6 +120,37 @@ class Termageddon_Usercentrics_Public {
 		echo '<!-- TERMAGEDDON + USERCENTRICS (DISABLED) -->';
 		echo wp_kses( $script, Termageddon_Usercentrics::ALLOWED_HTML );
 		echo '<!-- END TERMAGEDDON + USERCENTRICS -->';
+	}
+
+	/**
+	 * Display debug information to console if applicable
+	 *
+	 * @return void
+	 */
+	public function debug_display() {
+		if ( ( Termageddon_Usercentrics::is_geoip_enabled() || Termageddon_Usercentrics::is_debug_mode_enabled() )
+			&&
+			! Termageddon_Usercentrics::is_ajax_mode_enabled()
+			) {
+				list('city' => $city, 'state' => $state, 'country' => $country) = Termageddon_Usercentrics::lookup_ip_address();
+
+				// Output debug message to console.
+				Termageddon_Usercentrics::debug(
+					'IP Address: ' . Termageddon_Usercentrics::get_processed_ip_address(),
+					'City: ' . ( $city ?? 'Unknown' ),
+					'State: ' . ( $state ?? 'Unknown' ),
+					'Country: ' . ( $country ?? 'Unknown' ),
+					'--',
+					'Located in EU?: ' . ( Termageddon_Usercentrics::is_located_in_eu() ? 'Yes' : 'No' ),
+					'Located in UK?: ' . ( Termageddon_Usercentrics::is_located_in_uk() ? 'Yes' : 'No' ),
+					'Located in Canada?: ' . ( Termageddon_Usercentrics::is_located_in_canada() ? 'Yes' : 'No' ),
+					'Located in California?: ' . ( Termageddon_Usercentrics::is_located_in_california() ? 'Yes' : 'No' ),
+					'Located in Virginia?: ' . ( Termageddon_Usercentrics::is_located_in_virginia() ? 'Yes' : 'No' ),
+					'--',
+					'Geo-Location Mode?: ' . ( Termageddon_Usercentrics::is_geoip_enabled() ? 'Yes' : 'No' ),
+					'AJAX Mode?: ' . ( Termageddon_Usercentrics::is_ajax_mode_enabled() ? 'Yes' : 'No' ),
+				);
+		}
 	}
 
 
@@ -154,53 +186,38 @@ class Termageddon_Usercentrics_Public {
 			return self::disable_termageddon_script();
 		}
 
-		// Check for Disable for troubleshooting while validating query param.
-		if (Termageddon_Usercentrics::is_disabled_for_troubleshooting()) {
-			return self::disable_termageddon_script();
-		}
+		// If forcibly enabled, bypass individual detections.
+		if ( ! Termageddon_Usercentrics::is_enabled_via_get_override() ) {
+			// Check for Disable for troubleshooting.
+			if ( Termageddon_Usercentrics::is_disabled_for_troubleshooting() ) {
+				return self::disable_termageddon_script();
+			}
 
-		// Debug Display to identify locations.
-		if ( ( Termageddon_Usercentrics::is_geoip_enabled() || Termageddon_Usercentrics::is_debug_mode_enabled() )
-				&&
-				! Termageddon_Usercentrics::is_ajax_mode_enabled()
-			) {
-			list('city' => $city, 'state' => $state, 'country' => $country) = Termageddon_Usercentrics::lookup_ip_address();
+			// Debug display to console if applicable.
+			self::debug_display();
 
-			// Output debug message to console.
-			Termageddon_Usercentrics::debug(
-				'IP Address: ' . Termageddon_Usercentrics::get_processed_ip_address(),
-				'City: ' . ( $city ?? 'Unknown' ),
-				'State: ' . ( $state ?? 'Unknown' ),
-				'Country: ' . ( $country ?? 'Unknown' ),
-				'--',
-				'Located in EU?: ' . ( Termageddon_Usercentrics::is_located_in_eu() ? 'Yes' : 'No' ),
-				'Located in UK?: ' . ( Termageddon_Usercentrics::is_located_in_uk() ? 'Yes' : 'No' ),
-				'Located in Canada?: ' . ( Termageddon_Usercentrics::is_located_in_canada() ? 'Yes' : 'No' ),
-				'Located in California?: ' . ( Termageddon_Usercentrics::is_located_in_california() ? 'Yes' : 'No' ),
-				'Located in Virginia?: ' . ( Termageddon_Usercentrics::is_located_in_virginia() ? 'Yes' : 'No' ),
-				'--',
-				'Geo-Location Mode?: ' . ( Termageddon_Usercentrics::is_geoip_enabled() ? 'Yes' : 'No' ),
-				'AJAX Mode?: ' . ( Termageddon_Usercentrics::is_ajax_mode_enabled() ? 'Yes' : 'No' ),
-			);
-		}
+			// Check for individual disable detections.
+			$disable_on_logged_in = get_option( 'termageddon_usercentrics_disable_logged_in', false ) ? true : false;
+			if ( $disable_on_logged_in && is_user_logged_in() ) {
+				return self::disable_termageddon_script();
+			}
 
-		$disable_on_logged_in = get_option( 'termageddon_usercentrics_disable_logged_in', false ) ? true : false;
-		if ( $disable_on_logged_in && is_user_logged_in() ) {
-			return self::disable_termageddon_script();
-		}
+			$disable_on_editor = get_option( 'termageddon_usercentrics_disable_editor', false ) ? true : false;
+			if ( $disable_on_editor && current_user_can( 'editor' ) ) {
+				return self::disable_termageddon_script();
+			}
 
-		$disable_on_editor = get_option( 'termageddon_usercentrics_disable_editor', false ) ? true : false;
-		if ( $disable_on_editor && current_user_can( 'editor' ) ) {
-			return self::disable_termageddon_script();
-		}
+			$disable_on_admin = get_option( 'termageddon_usercentrics_disable_admin', false ) ? true : false;
+			if ( $disable_on_admin && current_user_can( 'administrator' ) ) {
+				return self::disable_termageddon_script();
+			}
 
-		$disable_on_admin = get_option( 'termageddon_usercentrics_disable_admin', false ) ? true : false;
-		if ( $disable_on_admin && current_user_can( 'administrator' ) ) {
-			return self::disable_termageddon_script();
-		}
-
-		if ( Termageddon_Usercentrics::is_geoip_enabled() && ! Termageddon_Usercentrics::is_ajax_mode_enabled() && Termageddon_Usercentrics::should_hide_due_to_location() ) {
-			return self::disable_termageddon_script();
+			if ( Termageddon_Usercentrics::is_geoip_enabled() && ! Termageddon_Usercentrics::is_ajax_mode_enabled() && Termageddon_Usercentrics::should_hide_due_to_location() ) {
+				return self::disable_termageddon_script();
+			}
+		} else {
+			// Debug display to console if applicable.
+			self::debug_display();
 		}
 
 		if ( Termageddon_Usercentrics::is_geoip_enabled() && Termageddon_Usercentrics::is_ajax_mode_enabled() ) {
@@ -216,6 +233,16 @@ window.addEventListener(\'load\', function () {
 	jQuery(\'div.et_pb_video_overlay_hover\').on(\'click\', function(e) {
 		jQuery(this).closest(\'div.et_pb_video_overlay\').hide()
 	}).find(\'a.et_pb_video_play\').attr(\'href\', \'javascript:void(0)\')
+	})
+</script>';
+		}
+
+		// Elementor Video Player Integration Javascript.
+		if ( Termageddon_Usercentrics::is_integration_enabled( 'elementor_video' ) ) {
+			$script .= '<script type="application/javascript" id="uc-integration-elementor-video">
+window.addEventListener(\'load\', function () {
+	jQuery(\'.pp-media-overlay\').on(\'click\', function(e) {
+		jQuery(this).hide()
 	})
 </script>';
 		}

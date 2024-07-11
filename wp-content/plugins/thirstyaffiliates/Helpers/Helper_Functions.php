@@ -725,7 +725,7 @@ class Helper_Functions {
         return $this->current_user_can('manage_options');
     }
 
-    public function is_subscriber() { 
+    public function is_subscriber() {
         return $this->current_user_can('subscriber');
     }
 
@@ -739,7 +739,7 @@ class Helper_Functions {
     }
 
     public function site_domain() {
-        return preg_replace('#^https?://(www\.)?([^\?\/]*)#', '$2', home_url());
+        return preg_replace('#^https?://(www\.)?([^\?\/]*)#', '$2', get_option('home'));
     }
 
     /**
@@ -1007,9 +1007,6 @@ class Helper_Functions {
                 ),
                 'subscription_cancel' => array(
                     'enabled' => true,
-                ),
-                'subscription_pause' => array(
-                    'enabled' => false,
                 ),
             ),
         );

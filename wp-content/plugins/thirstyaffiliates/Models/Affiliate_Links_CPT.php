@@ -249,7 +249,7 @@ class Affiliate_Links_CPT implements Model_Interface , Initiable_Interface {
      * @param \WP_Query $query The WP_Query instance.
      */
     public function thirstypay_links_filter( $query ) {
-        if ( ! is_admin() || wp_doing_ajax() || $query->query_vars['post_type'] != Plugin_Constants::AFFILIATE_LINKS_CPT ) {
+        if ( ! is_admin() || wp_doing_ajax() || ! isset( $query->query_vars['post_type'] ) || $query->query_vars['post_type'] !== Plugin_Constants::AFFILIATE_LINKS_CPT ) {
             return;
         }
 

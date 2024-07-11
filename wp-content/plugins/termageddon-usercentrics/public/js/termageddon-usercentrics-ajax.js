@@ -11,6 +11,14 @@ window.addEventListener("UC_UI_INITIALIZED", function () {
 		if (parts.length === 2) return parts.pop().split(";").shift();
 	};
 
+	const getQueryParams = (param) => {
+		const params = new Proxy(new URLSearchParams(window.location.search), {
+			get: (searchParams, prop) => searchParams.get(prop),
+		});
+
+		return params[param];
+	};
+
 	const setCookie = (name, value, days) => {
 		var expires = "";
 		if (days) {
@@ -56,6 +64,10 @@ window.addEventListener("UC_UI_INITIALIZED", function () {
 	// Check for Usercentrics Integration
 	if (typeof UC_UI === "undefined")
 		return console.error("Usercentrics not loaded");
+
+	//Check query variable from browser
+	const query_hide =
+		getQueryParams("enable-usercentrics") === "" ? true : false;
 
 	//Check for local cookie to use instead of calling.
 	const cookie_hide = getCookie(tuCookieHideName);
@@ -130,6 +142,15 @@ window.addEventListener("UC_UI_INITIALIZED", function () {
 							"Located in Virginia?: " +
 							(data.inVirginia ? "Yes" : "No")
 					);
+				}
+
+				if (query_hide) {
+					if (tuDebug)
+						console.log(
+							"UC: Enabling due to query parameter override.",
+							"Showing Usercentrics"
+						);
+					return updateCookieConsent(false);
 				}
 
 				//If you are not supposed to be hiding, show the CMP.

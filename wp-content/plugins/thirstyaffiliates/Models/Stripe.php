@@ -1398,7 +1398,6 @@ class Stripe implements Model_Interface, Initiable_Interface {
             'payment_method_update_enabled' => ! empty( $_POST['ta_portal_payment_method_update_enabled'] ),
             'subscription_cancel_enabled' => ! empty( $_POST['ta_portal_subscription_cancel_enabled'] ),
             'subscription_cancel_mode' => isset( $_POST['ta_portal_subscription_cancel_mode'] ) && $_POST['ta_portal_subscription_cancel_mode'] == 'immediately' ? 'immediately' : 'at_period_end',
-            'subscription_pause_enabled' => ! empty( $_POST['ta_portal_subscription_pause_enabled'] ),
             'invoice_history_enabled' => ! empty( $_POST['ta_portal_invoice_history_enabled'] ),
         );
 
@@ -1417,7 +1416,6 @@ class Stripe implements Model_Interface, Initiable_Interface {
                 'payment_method_update_enabled' => $this->_helper_functions->array_get( $portal, 'features.payment_method_update.enabled' ),
                 'subscription_cancel_enabled' => $this->_helper_functions->array_get( $portal, 'features.subscription_cancel.enabled' ),
                 'subscription_cancel_mode' => $this->_helper_functions->array_get( $portal, 'features.subscription_cancel.mode' ),
-                'subscription_pause_enabled' => $this->_helper_functions->array_get( $portal, 'features.subscription_pause.enabled' ),
                 'invoice_history_enabled' => $this->_helper_functions->array_get( $portal, 'features.invoice_history.enabled' ),
             );
 
@@ -1447,9 +1445,6 @@ class Stripe implements Model_Interface, Initiable_Interface {
                         'enabled' => $data['subscription_cancel_enabled'] ? 'true' : 'false',
                         'mode' => $data['subscription_cancel_mode'] == 'immediately' ? 'immediately' : 'at_period_end',
                         'proration_behavior' => 'none',
-                    ),
-                    'subscription_pause' => array(
-                        'enabled' => $data['subscription_pause_enabled'] ? 'true' : 'false',
                     ),
                 ),
                 'default_return_url' => home_url( '/' ),
