@@ -657,11 +657,6 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 		padding-left: 20px !important;
 	}
 
-
-	.slick-prev, .slick-next {
-		display: none !important;
-	}
-
 	.button-gear .wp-block-button__link{	
 		font-family: 'Inter';
 		font-size: 12px;
