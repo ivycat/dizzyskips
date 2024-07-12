@@ -170,7 +170,6 @@ body {
 }
 
 .gear-item-column {
-	background-color: rgb(126, 220, 225) !important;
 	width: 95%;
 	display: flex !important;
 	justify-content: center;
