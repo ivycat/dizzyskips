@@ -158,27 +158,6 @@
 					"fontFamily": "Consolas,Menlo,Monaco,\"SF Mono\",\"DejaVu Sans Mono\",\"Roboto Mono\",\"Courier New\",Courier,monospace"
 				},
 				{
-					"name": "Lora",
-					"slug": "lora",
-					"fontFamily": "Lora,\"Times New Roman\",\"New York\",Times,\"Noto Serif\",serif",
-					"fontFace": [
-						{
-							"fontFamily": "Lora",
-							"fontWeight": "200 900",
-							"fontStyle": "normal",
-							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/lora-v23-latin-ext_latin-regular.woff2" ]
-						},
-						{
-							"fontFamily": "Lora",
-							"fontWeight": "200 900",
-							"fontStyle": "italic",
-							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/lora-v23-latin-ext_latin-italic.woff2" ]
-						}
-					]
-				},
-				{
 					"name": "Stigmature",
 					"slug": "stigmature",
 					"fontFamily": "Stigmature",
