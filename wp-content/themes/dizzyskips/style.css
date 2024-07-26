@@ -60,7 +60,7 @@ h1, .h1 {
   h2, .h2 {
 	font-size: 1.4444444rem;
 	line-height: 1.7222222rem;
-	margin-top: 1.7222222rem !important;
+	margin-top: 1.7222222rem;
 	margin-bottom: 1.7222222rem;
   }
   h3, .h3 {
@@ -134,6 +134,7 @@ h1, .h1 {
     font-weight: lighter;
     line-height: 1.2;
 	font-size: 35px;
+	margin-top: 0px !important;
 }
 .couponbtn{
 	width: 90%;
