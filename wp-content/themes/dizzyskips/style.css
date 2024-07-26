@@ -600,6 +600,9 @@ h1, .h1 {
 
 .wp-block-post-featured-image{
 	height: fit-content;
+	& img {
+		border: none;
+	}
 }
 
 body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
