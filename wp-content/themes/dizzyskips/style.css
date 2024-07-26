@@ -160,6 +160,7 @@ h1, .h1 {
 
 	& img {
 		width: 450px !important;
+		border: none;
 	}
 	& h2 {
 		width: 100%;
@@ -307,6 +308,7 @@ h1, .h1 {
 .blog-image{
 	width: 95%;
 	height: 204.53px;
+	border: none !important;
 }
 
 .blog-subtitle{
