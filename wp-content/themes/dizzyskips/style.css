@@ -51,40 +51,38 @@ body {
 	background-attachment: fixed, fixed, fixed;
 }
 
-
 h1, .h1 {
-	font-size: 4.2222222rem;
-	line-height: 4.5rem;
-	margin-top: 1.5rem;
-	margin-bottom: 3rem;
+	font-size: 1.7222222rem;
+	line-height: 1.7222222rem;
+	margin-top: 1.7222222rem;
+	margin-bottom: 3.4444444rem;
   }
-
-h2, .h2 {
-	font-size: 2.6111111rem;
-	line-height: 3rem;
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
-}
-
-h3, .h3 {
-	font-size: 1.6111111rem;
-	line-height: 3rem;
-	margin-top: 1.5rem;
+  h2, .h2 {
+	font-size: 1.4444444rem;
+	line-height: 1.7222222rem;
+	margin-top: 1.7222222rem;
+	margin-bottom: 1.7222222rem;
+  }
+  h3, .h3 {
+	font-size: 1.2222222rem;
+	line-height: 1.7222222rem;
+	margin-top: 1.7222222rem;
 	margin-bottom: 0rem;
   }
-
   h4, .h4 {
-	font-size: 1.1rem;
-	line-height: 1.5rem;
-	margin-top: 1.5rem;
+	font-size: 1rem;
+	line-height: 1.7222222rem;
+	margin-top: 1.7222222rem;
 	margin-bottom: 0rem;
   }
   h5, .h5 {
-	font-size: 1.1rem;
-	line-height: 1.5rem;
-	margin-top: 1.5rem;
+	font-size: 1rem;
+	line-height: 1.7222222rem;
+	margin-top: 1.7222222rem;
 	margin-bottom: 0rem;
   }
+
+  
 .wp-site-blocks {
 	background: #fff;
 	width: 600px;
@@ -774,5 +772,3 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 	
 	}
   }
-
-
