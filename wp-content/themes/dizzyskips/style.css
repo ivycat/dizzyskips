@@ -161,6 +161,7 @@ h1, .h1 {
 	& img {
 		width: 450px !important;
 		border: none;
+		border-radius: 5px;
 	}
 	& h2 {
 		width: 100%;
