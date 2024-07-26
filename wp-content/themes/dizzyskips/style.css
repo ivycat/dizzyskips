@@ -96,6 +96,7 @@ h1, .h1 {
 	font-family: "Stigmature";
 	font-weight: lighter;
 	font-size: 60px !important;
+	margin-top: 30px;
 }
 .subtitle {
 	font-family: "Stigmature";
@@ -676,7 +677,7 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 
 	.page-title {
 		font-size: 30px !important;
-		margin-top: 30px;
+	
 	}
 
 	.wp-block-post-title{
