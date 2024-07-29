@@ -138,6 +138,10 @@ function my_acf_block_render_callback( $block ) {
     // code to display ACF fields
 }
 
+function register_my_menu() {
+    register_nav_menu('header-menu',__( 'Header Menu' ));
+}
+add_action( 'init', 'register_my_menu' );
 
 ?>
 

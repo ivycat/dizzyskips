@@ -268,13 +268,18 @@ class Termageddon_Usercentrics {
 
 		if ( self::is_geoip_enabled() && ! self::is_ajax_mode_enabled() && ! wp_doing_cron() ) {
 			$this->loader->add_action( 'init', $this, 'lookup_ip_address' );
-
 		}
 		// If AJAX Mode is enabled, load geolocation ajax actions.
 		$this->loader->add_action( 'wp_ajax_uc_geolocation_lookup', $this, 'geolocation_lookup_ajax' );
 		$this->loader->add_action( 'wp_ajax_nopriv_uc_geolocation_lookup', $this, 'geolocation_lookup_ajax' );
 
-		$this->loader->add_action( 'wp_head', $plugin_public, 'build_termageddon_script', 1 );
+		// Load the primary embed (or disabled) script in the head.
+		$this->loader->add_action(
+			'wp_head',
+			$plugin_public,
+			'build_termageddon_script',
+			self::get_embed_priority()
+		);
 	}
 
 	/**
@@ -937,11 +942,29 @@ class Termageddon_Usercentrics {
 	}
 
 
+	/**
+	 * Returns a human readable version of the allowed html tags.
+	 *
+	 * @return string
+	 */
 	public static function get_allowed_html_kses(): string {
 		$allowed = wp_kses_allowed_html( self::ALLOWED_HTML );
-		return json_encode( $allowed, JSON_PRETTY_PRINT );
+		return wp_json_encode( $allowed, JSON_PRETTY_PRINT );
 	}
 
+	/**
+	 * Returns the script priority from 1-10.
+	 *
+	 * @return int
+	 */
+	public static function get_embed_priority(): int {
+		$priority = get_option( 'termageddon_usercentrics_embed_priority', 1 );
+		$priority = intval( $priority );
+		if ( $priority <= 10 && $priority >= 1 ) {
+			return $priority;
+		}
+		return 1;
+	}
 
 
 	/** Identifies if any geoip location is enabled, despite if the locations are enabled.
@@ -969,7 +992,7 @@ class Termageddon_Usercentrics {
 			update_option( 'termageddon_usercentrics_geoip_enabled', $enabled ? '1' : '' );// Update value based on currently existing implementation.
 			return $enabled;
 		} else { // Otherwise, return new option value.
-			return $enabled;
+			return '1' === $enabled;
 		}
 	}
 

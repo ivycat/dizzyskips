@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Termageddon + Usercentrics\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 06:06+0000\n"
+"POT-Creation-Date: 2024-07-29 01:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.6.2; wp-6.0\n"
 "X-Domain: termageddon-usercentrics"
 
-#: admin/class-termageddon-usercentrics-admin.php:344
+#: admin/class-termageddon-usercentrics-admin.php:394
 msgid "Administrators"
 msgstr ""
 
@@ -28,24 +28,24 @@ msgstr ""
 msgid "Allowed HTML Tags"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1056
+#: admin/class-termageddon-usercentrics-admin.php:1182
 msgid "along with page 1 of your Privacy Policy questionnaire within "
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:622
+#: admin/class-termageddon-usercentrics-admin.php:694
 msgid "California (CPRA or CIPA)"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:604
+#: admin/class-termageddon-usercentrics-admin.php:676
 msgid "Canada (PIPEDA)"
 msgstr ""
 
 #. section ID.
-#: admin/class-termageddon-usercentrics-admin.php:714
+#: admin/class-termageddon-usercentrics-admin.php:786
 msgid "Control Panel"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1016
+#: admin/class-termageddon-usercentrics-admin.php:1142
 msgid "Cookie Policy and Consent Solution"
 msgstr ""
 
@@ -53,11 +53,11 @@ msgstr ""
 msgid "Debug Information"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:520
+#: admin/class-termageddon-usercentrics-admin.php:592
 msgid "Disable for Troubleshooting"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:455
+#: admin/class-termageddon-usercentrics-admin.php:505
 msgid "Divi Video Player Integration"
 msgstr ""
 
@@ -67,28 +67,32 @@ msgid ""
 "controlling visibility for logged in users and admins."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:362
+#: admin/class-termageddon-usercentrics-admin.php:412
 msgid "Editors"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:474
+#: admin/class-termageddon-usercentrics-admin.php:524
 msgid "Elementor Video Player Integration"
 msgstr ""
 
 #: admin/class-termageddon-usercentrics-admin.php:170
-#: admin/class-termageddon-usercentrics-admin.php:307
+#: admin/class-termageddon-usercentrics-admin.php:357
 msgid "Embed Code"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:667
+#: admin/class-termageddon-usercentrics-admin.php:570
+msgid "Embed Code Priority"
+msgstr ""
+
+#: admin/class-termageddon-usercentrics-admin.php:739
 msgid "Enable location logging"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:687
+#: admin/class-termageddon-usercentrics-admin.php:759
 msgid "Enable page caching support via AJAX"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:728
+#: admin/class-termageddon-usercentrics-admin.php:800
 msgid "Error Count"
 msgstr ""
 
@@ -96,11 +100,11 @@ msgstr ""
 msgid "Error Information"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:746
+#: admin/class-termageddon-usercentrics-admin.php:818
 msgid "Error List"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:568
+#: admin/class-termageddon-usercentrics-admin.php:640
 msgid "European Union & European Economic Area (GDPR)"
 msgstr ""
 
@@ -108,7 +112,7 @@ msgstr ""
 msgid "Every Month"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:433
+#: admin/class-termageddon-usercentrics-admin.php:483
 msgid ""
 "For some theme builders including Divi, the footer (bottom bar) does not "
 "support shortcodes. If you are experiencing issues, use the following HTML "
@@ -118,12 +122,12 @@ msgstr ""
 
 #. section ID.
 #: admin/class-termageddon-usercentrics-admin.php:172
-#: admin/class-termageddon-usercentrics-admin.php:548
+#: admin/class-termageddon-usercentrics-admin.php:620
 msgid "Geo-Location"
 msgstr ""
 
 #: admin/class-termageddon-usercentrics-admin.php:143
-#: admin/class-termageddon-usercentrics-admin.php:1065
+#: admin/class-termageddon-usercentrics-admin.php:1191
 msgid ""
 "Geo-Location is enabled, but no locations have been toggled on. This means "
 "that the cookie-consent will be hidden to all users."
@@ -153,7 +157,7 @@ msgstr ""
 msgid "Geolocation Database Readable"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:408
+#: admin/class-termageddon-usercentrics-admin.php:458
 msgid "Hide Privacy Settings Link when cookie consent tool is disabled"
 msgstr ""
 
@@ -161,11 +165,11 @@ msgstr ""
 msgid "https://termageddon.com"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1034
+#: admin/class-termageddon-usercentrics-admin.php:1160
 msgid "If you are using the Divi theme"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1033
+#: admin/class-termageddon-usercentrics-admin.php:1159
 msgid ""
 "If you would like to remove Usercentrics for logged in users such as admins, "
 "you can do so below."
@@ -179,12 +183,20 @@ msgstr ""
 msgid "Location logging is enabled."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:380
+#: admin/class-termageddon-usercentrics-admin.php:430
 msgid "Logged-in Users"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1056
+#: admin/class-termageddon-usercentrics-admin.php:1182
 msgid "Not sure what to select? Review"
+msgstr ""
+
+#: admin/class-termageddon-usercentrics-admin.php:576
+msgid ""
+"Override the default priority of the embed code (Defaults to 1). By "
+"adjusting this value (number between 1 and 10), you can change the priority "
+"of the embed code. The higher the number, the sooner the embed code will be "
+"rendered in the source code."
 msgstr ""
 
 #: admin/class-termageddon-usercentrics-admin.php:144
@@ -193,18 +205,18 @@ msgid ""
 "disable the geo-location feature."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:493
+#: admin/class-termageddon-usercentrics-admin.php:543
 msgid "Presto Player"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:427
+#: admin/class-termageddon-usercentrics-admin.php:477
 msgid "Privacy Settings Link - Alternative Implementation"
 msgstr ""
 
 #. section ID.
-#: includes/class-termageddon-usercentrics.php:405
+#: includes/class-termageddon-usercentrics.php:411
 #: admin/class-termageddon-usercentrics-admin.php:171
-#: admin/class-termageddon-usercentrics-admin.php:335
+#: admin/class-termageddon-usercentrics-admin.php:385
 msgid "Settings"
 msgstr ""
 
@@ -217,7 +229,7 @@ msgstr ""
 msgid "Termageddon + Usercentrics"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1056
+#: admin/class-termageddon-usercentrics-admin.php:1182
 msgid "this article"
 msgstr ""
 
@@ -227,37 +239,37 @@ msgid ""
 "support before using any features on this panel."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:456
+#: admin/class-termageddon-usercentrics-admin.php:506
 msgid ""
 "This resolves and improves the cookie-consent implementation when using an "
 "image placeholder overlay for the Divi video embed."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:475
+#: admin/class-termageddon-usercentrics-admin.php:525
 msgid ""
 "This resolves and improves the cookie-consent implementation when using an "
 "image placeholder overlay for the Elementor video embed."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1077
+#: admin/class-termageddon-usercentrics-admin.php:1203
 msgid ""
 "To reset any of the backend variables, update the values below and save your "
 "changes."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:586
+#: admin/class-termageddon-usercentrics-admin.php:658
 msgid "United Kingdom (UK DPA)"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1015
+#: admin/class-termageddon-usercentrics-admin.php:1141
 msgid "Upon generating your "
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1001
+#: admin/class-termageddon-usercentrics-admin.php:1127
 msgid "Upon saving, all previous errors in the log will be deleted."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:640
+#: admin/class-termageddon-usercentrics-admin.php:712
 msgid "Virginia (VCDPA)"
 msgstr ""
 
@@ -268,7 +280,7 @@ msgid ""
 "assistance and troubleshooting."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:414
+#: admin/class-termageddon-usercentrics-admin.php:464
 msgid ""
 "When enabled, the Privacy Settings link will be hidden from certain users, "
 "whether that be certain logged in users (via your selections above in the "
@@ -281,19 +293,19 @@ msgid ""
 "displayed to those respective users as well."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:673
+#: admin/class-termageddon-usercentrics-admin.php:745
 msgid ""
 "When enabled, the visitor's location can be viewed in the browser console, "
 "allowing easier testing & troubleshooting."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:693
+#: admin/class-termageddon-usercentrics-admin.php:765
 msgid ""
 "When enabled, the visitor's location is checked via javascript to allow "
 "support for page caching."
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:526
+#: admin/class-termageddon-usercentrics-admin.php:598
 msgid ""
 "When enabled, this feature allows you to turn off the consent tool for all "
 "site visitors, however by adding <code>?enable-usercentrics</code> to the "
@@ -302,7 +314,7 @@ msgid ""
 "troubleshooting)"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1052
+#: admin/class-termageddon-usercentrics-admin.php:1178
 msgid ""
 "When enabled, you will be collecting IP addresses for the purposes of "
 "determining which cookie consent solution (or lack thereof) to provide to "
@@ -318,14 +330,14 @@ msgstr ""
 msgid "with the IP Address of"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1017
+#: admin/class-termageddon-usercentrics-admin.php:1143
 msgid ""
 "within your Termageddon account, you will be brought to the \"View embed "
 "code\" page.  Copy the embed code listed under \"Usercentrics cookie consent "
 "tool embedding instructions\" and paste it below:"
 msgstr ""
 
-#: admin/class-termageddon-usercentrics-admin.php:1035
+#: admin/class-termageddon-usercentrics-admin.php:1161
 msgid ""
 "you will need to enable at least one of the settings below to ensure logged "
 "in users/admins can properly use the “Enable Visual Builder” feature "

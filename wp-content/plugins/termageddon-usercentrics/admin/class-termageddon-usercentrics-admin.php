@@ -284,6 +284,56 @@ class Termageddon_Usercentrics_Admin {
 
 	}
 
+	/**
+	 * Sanitize all settings and validate them if needed.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return int $value The sanitized value.
+	 */
+	public static function sanitize_integer( $value ) {
+		return intval( $value );
+	}
+	/**
+	 * Sanitize all settings and validate them if needed.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return string $value The sanitized value.
+	 */
+	public static function sanitize_text( $value ) {
+		return strval( $value );
+	}
+	/**
+	 * Sanitize all settings and validate them if needed.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return bool $value The sanitized value.
+	 */
+	public static function sanitize_boolean( $value ) {
+		return $value ? true : false;
+	}
+
+	// ============================================= //
+	// ======== Custom Sanitation Functions ======== //
+	// ============================================= //
+
+	/**
+	 * Ensure that the embed priority is an integer between 1 and 10.
+	 * If not, return 1.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return int $value The sanitized value.
+	 **/
+	public static function sanitize_embed_priority( $value ) {
+		$priority = self::sanitize_integer( $value );
+		if ( $priority <= 10 && $priority >= 1 ) {
+			return intval( $value );
+		}
+		return 1;
+	}
 
 	/**
 	 * Register all settings for the tools page.
@@ -515,6 +565,28 @@ class Termageddon_Usercentrics_Admin {
 		);
 
 		// Privacy Settings Link Disable.
+		add_settings_field(
+			'termageddon_usercentrics_embed_priority',
+			__( 'Embed Code Priority', 'termageddon-usercentrics' ) . $this->mark_as_beta(),
+			array( &$this, 'embed_priority_html' ), // function which prints the field.
+			'termageddon-usercentrics', // page slug.
+			'termageddon_usercentrics_section_settings', // section ID.
+			array(
+				'label_for'   => 'termageddon_usercentrics_embed_priority',
+				'description' => __( 'Override the default priority of the embed code (Defaults to 1). By adjusting this value (number between 1 and 10), you can change the priority of the embed code. The higher the number, the sooner the embed code will be rendered in the source code.', 'termageddon-usercentrics' ),
+			)
+		);
+
+		register_setting(
+			'termageddon_usercentrics_settings', // settings group name.
+			'termageddon_usercentrics_embed_priority', // option name.
+			array(
+				'type'              => 'int',
+				'sanitize_callback' => array( &$this, 'sanitize_embed_priority' ),
+				'default'           => 1,
+			)
+		);
+
 		add_settings_field(
 			'termageddon_usercentrics_disable_troubleshooting',
 			__( 'Disable for Troubleshooting', 'termageddon-usercentrics' ),
@@ -761,6 +833,46 @@ class Termageddon_Usercentrics_Admin {
 	}
 
 	/**
+	 * Helper method to easily generate a quick input field.
+	 *
+	 * @param string $option - The option name/location you are building the input for.
+	 * @param array  $args The arguments provided by the add_settings_field() method.
+	 * @return void
+	 */
+	private static function generate_input( string $option, array $args = array() ) {
+		$option_name = 'termageddon_usercentrics_' . $option;
+
+		// Options.
+		$default     = ( isset( $args['default'] ) ? $args['default'] : null );
+		$min         = ( isset( $args['min'] ) ? $args['min'] : null );
+		$max         = ( isset( $args['max'] ) ? $args['max'] : null );
+		$type        = ( isset( $args['type'] ) ? $args['type'] : 'text' );
+		$label       = ( isset( $args['label'] ) ? $args['label'] : '' );
+		$tip         = ( isset( $args['tip'] ) ? $args['tip'] : null );
+		$description = ( isset( $args['description'] ) ? $args['description'] : null );
+
+		// Is the option currently active?
+		$value = get_option( $option_name, $default );
+
+		echo '<input 
+			type="' . esc_attr( $type ) . '" 
+			class="termageddon-input' . ( ! empty( $label ) ? ' label-' . esc_attr( $label ) : '' ) . '"
+			id="' . esc_attr( $option_name ) . '"
+			name="' . esc_attr( $option_name ) . '"
+			value="' . esc_attr( $value ) . '"
+			' . ( is_null( $min ) ? '' : 'min="' . esc_attr( $min ) . '"' ) . '
+			' . ( is_null( $max ) ? '' : 'max="' . esc_attr( $max ) . '"' ) . '
+			 />';
+
+		if ( $tip ) {
+			echo '<b class="wntip" data-title="' . esc_attr( $tip ) . '"> ? </b>';
+		}
+		if ( $description ) {
+			echo '<p>' . wp_kses_post( $description ) . '</p>';
+		}
+
+	}
+	/**
 	 * Helper method to easily generate a quick checkbox.
 	 *
 	 * @param string $area - The option name/location you are building the checkbox for.
@@ -883,6 +995,20 @@ class Termageddon_Usercentrics_Admin {
 	 */
 	public function psl_alternate_implementation( array $args ) {
 		self::generate_checkbox( 'alternate', 'psl', $args );
+	}
+	/**
+	 * The HTML field for the disable troubleshooting checkbox.
+	 *
+	 * @param array $args The arguments provided by the add_settings_field() method.
+	 * @return void
+	 */
+	public function embed_priority_html( array $args ) {
+		$args['default'] = 1;
+		$args['min']     = 1;
+		$args['max']     = 10;
+		$args['type']    = 'number';
+
+		self::generate_input( 'embed_priority', $args );
 	}
 	/**
 	 * The HTML field for the disable troubleshooting checkbox.
