@@ -96,7 +96,7 @@ h1, .h1 {
 	font-family: "Stigmature";
 	font-weight: lighter;
 	font-size: 60px !important;
-	margin-top: 2rem;
+	margin-top: 2rem !important;
 }
 .subtitle {
 	font-family: "Stigmature";
@@ -111,12 +111,24 @@ h1, .h1 {
 	line-height: 1.2;
 }
 
+.current-menu-item {
+	background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!--%20License%3A%20PD.%20Made%20by%20stephenhutchings%3A%20https%3A%2F%2Fgithub.com%2Fstephenhutchings%2Ftypicons.font%20--%3E%3Csvg%20fill%3D%22%23f8f90e%22%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.2%22%20baseProfile%3D%22tiny%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%203s-6.186%205.34-9.643%208.232c-.203.184-.357.452-.357.768%200%20.553.447%201%201%201h2v7c0%20.553.447%201%201%201h3c.553%200%201-.448%201-1v-4h4v4c0%20.552.447%201%201%201h3c.553%200%201-.447%201-1v-7h2c.553%200%201-.447%201-1%200-.316-.154-.584-.383-.768-3.433-2.892-9.617-8.232-9.617-8.232z%22%2F%3E%3C%2Fsvg%3E') !important;
+}
 
 .title-pages {
 	font-size: 60px !important;
 }
 
-
+.homebutton-img{
+	cursor: pointer;
+	content: '' !important;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!--%20License%3A%20PD.%20Made%20by%20stephenhutchings%3A%20https%3A%2F%2Fgithub.com%2Fstephenhutchings%2Ftypicons.font%20--%3E%3Csvg%20fill%3D%22%23ffffff%22%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.2%22%20baseProfile%3D%22tiny%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%203s-6.186%205.34-9.643%208.232c-.203.184-.357.452-.357.768%200%20.553.447%201%201%201h2v7c0%20.553.447%201%201%201h3c.553%200%201-.448%201-1v-4h4v4c0%20.552.447%201%201%201h3c.553%200%201-.447%201-1v-7h2c.553%200%201-.447%201-1%200-.316-.154-.584-.383-.768-3.433-2.892-9.617-8.232-9.617-8.232z%22%2F%3E%3C%2Fsvg%3E');
+    text-indent: -9999px;
+	width: 30px;
+}
 
 .button-gear .wp-block-button__link{	
 		font-family: 'Inter';

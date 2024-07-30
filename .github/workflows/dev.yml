@@ -1,4 +1,4 @@
-name: Deploy with rsync
+name: Deploy to WP Engine
 on:
   push:
     branches:
