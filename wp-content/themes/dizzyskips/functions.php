@@ -143,6 +143,15 @@ function register_my_menu() {
 }
 add_action( 'init', 'register_my_menu' );
 
+
+function enqueue_all_css() {
+    $stylesheet_url = get_template_directory_uri() . '/css/all.css';
+    wp_enqueue_style('all-css', $stylesheet_url);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_all_css');
+
+
 ?>
 
 
