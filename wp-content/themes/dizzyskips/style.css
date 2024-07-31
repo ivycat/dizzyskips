@@ -33,7 +33,7 @@ html, .root {
 
 
 p {
-	font-family: "Inter";
+	font-family: "Inter" !important;
 	color: #20252E;
 	font-size: 18px;
 }
@@ -49,6 +49,7 @@ body {
 	background-size: 100px 100px, cover, cover;
 	background-position: top left, center center, bottom center;
 	background-attachment: fixed, fixed, fixed;
+	font-family: "Inter" !important;
 }
 
 h1, .h1 {
@@ -93,13 +94,13 @@ h1, .h1 {
 
 .page-title {
 	color:#f8f90e !important;
-	font-family: "Stigmature";
+	font-family: "Stigmature" !important;
 	font-weight: lighter;
 	font-size: 60px !important;
 	margin-top: 2rem !important;
 }
 .subtitle {
-	font-family: "Stigmature";
+	font-family: "Stigmature" !important;
 	font-weight: lighter;
 	width: 246px;
 	line-height: 1.2;
