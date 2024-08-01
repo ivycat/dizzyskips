@@ -646,6 +646,12 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 	margin-right: 0px !important;
 }
 
+.gform_wrapper{
+	margin-bottom: 30px;
+}
+.gform_description{
+	color: #ffffff !important;
+}
 
 @media only screen and (max-width: 480px) {
 	main.wp-block-group{
@@ -703,12 +709,6 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 				font-size: 14px;
 			}
 	}
-
-	.singlepost-content{
-		margin-left: 40px;
-		margin-right:  40px;
-	}
-
 
 	.gear-item-content{
 		padding-left: 20px !important;
