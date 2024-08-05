@@ -686,7 +686,16 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 		font-size: 16px;
 	}
 
-
+	.wp-block-navigation__responsive-container-close {
+		right: 35px;
+	}
+	.page-template-default {
+		margin: -28px -29px;
+	}
+	.page-template-new-page{
+		margin: -28px -29px;
+	}
+	
 	.wp-block-navigation__responsive-container{
 		background: rgb(118,165,62);
 		background: linear-gradient(6deg, rgba(118,165,62,1) 0%, rgba(1,68,35,1) 100%);
