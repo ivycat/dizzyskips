@@ -50,6 +50,7 @@ body {
 	background-position: top left, center center, bottom center;
 	background-attachment: fixed, fixed, fixed;
 	font-family: "Inter" !important;
+	
 }
 
 h1, .h1 {
@@ -122,7 +123,6 @@ h1, .h1 {
 
 .homebutton-img{
 	cursor: pointer;
-	content: '' !important;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -684,6 +684,11 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 
 	html, .root {
 		font-size: 16px;
+		overflow-x: hidden !important;
+	}
+
+	.homebutton-img {
+		text-indent: 0px;
 	}
 
 	.wp-block-navigation__responsive-container-close {
@@ -695,7 +700,7 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
 	.page-template-new-page{
 		margin: -28px -29px;
 	}
-	
+
 	.wp-block-navigation__responsive-container{
 		background: rgb(118,165,62);
 		background: linear-gradient(6deg, rgba(118,165,62,1) 0%, rgba(1,68,35,1) 100%);
