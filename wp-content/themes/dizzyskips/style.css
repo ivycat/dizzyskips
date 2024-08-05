@@ -49,8 +49,7 @@ body {
 	background-size: 100px 100px, cover, cover;
 	background-position: top left, center center, bottom center;
 	background-attachment: fixed, fixed, fixed;
-	font-family: "Inter" !important;
-	
+	font-family: "Inter-Variable" !important;
 }
 
 h1, .h1 {
