@@ -33,10 +33,10 @@ html, .root {
 
 
 p {
-	font-family: "Inter-Variable" !important;
 	color: #20252E;
 	font-size: 18px;
 }
+
 body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
