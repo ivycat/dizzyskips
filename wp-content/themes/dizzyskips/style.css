@@ -630,6 +630,10 @@ body .sk-ww-instagram-reels .sk-ww-instagram-reels-item {
   	text-decoration: none;
 }
 
+.footer-nav .current-menu-item {
+	color: #20252e !important;
+}
+
 .inner-product-width {
 	display: flex !important;
 	justify-content: center;
