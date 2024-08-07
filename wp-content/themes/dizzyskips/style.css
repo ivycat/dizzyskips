@@ -37,6 +37,11 @@ p {
 	font-size: 18px;
 }
 
+ul li, .accordion-section-content {
+	font-size: 18px;
+}
+
+
 body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
