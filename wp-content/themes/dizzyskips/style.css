@@ -402,6 +402,7 @@ h1, .h1 {
 }
 
 .navbar-underline  {
+	z-index: 9999;
 	li{
 		color: white;
 		position: relative;
