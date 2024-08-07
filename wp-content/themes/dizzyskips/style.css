@@ -37,7 +37,7 @@ p {
 	font-size: 18px;
 }
 
-ul li, .accordion-section-content {
+ul li, ol li, .accordion-section-content {
 	font-size: 18px;
 }
 
