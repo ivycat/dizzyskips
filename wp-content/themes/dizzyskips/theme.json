@@ -11,9 +11,24 @@
 					"name": "Base"
 				},
 				{
+					"slug": "iron",
+					"color": "#D2D3D5",
+					"name": "Iron"
+				},
+				{
 					"slug": "contrast",
 					"color": "#414f57",
 					"name": "Contrast"
+				},
+				{
+					"slug": "oxford-blue",
+					"color": "#20252E",
+					"name": "Oxford Blue"
+				},
+				{
+					"slug": "ebony-clay",
+					"color": "#20252E",
+					"name": "Ebony Clay"
 				},
 				{
 					"slug": "primary",
@@ -29,6 +44,11 @@
 					"slug": "transparent",
 					"color": "transparent",
 					"name": "Transparent"
+				},
+				{
+					"slug": "lemon",
+					"color": "#F8F90E",
+					"name": "Lemon"
 				}
 			],
 			"gradients": [
